@@ -1,16 +1,8 @@
 .outerWrapper {
-  flex-basis: 30rem;
+  flex-basis: 40rem;
   min-height: 100%;
   background-color: var(--background-primary);
   border-right: 1px solid var(--border-primary);
-  transition: background-color 0.15s ease, transform 0.15s ease;
-  position: relative;
-}
-
-.outerWrapperHidden {
-  transform: translateX(-100%);
-  flex-basis: 0rem;
-  min-height: 100%;
   transition: background-color 0.15s ease, transform 0.15s ease;
   position: relative;
 }
@@ -49,18 +41,36 @@
   left: 0;
 }
 
-.hideButtonAnimation {
-  animation: hide 0.55s ease;
+.hide {
+  transform: translateX(-100%);
+  position: absolute;
 }
 
-@keyframes hide {
+.showSidebarButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.9rem 2.2rem 1.9rem 1.8rem;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border: none;
+  background-color: var(--color-primary);
+  position: absolute;
+  bottom: 3.2rem;
+  transition: all 0.15s ease;
+  animation: showButton 0.2s ease;
+}
+
+.showSidebarButton:hover {
+  background-color: var(--color-primary-hovermain);
+  transform: scaleX(1.05) scaleY(1.02);
+}
+
+@keyframes showButton {
   from {
-    transform: translateX(0);
-  }
-  20% {
-    transform: translateX(1rem) scaleX(1.1);
+    transform: translateX(-100%);
   }
   to {
-    transform: translateX(-100%) scaleX(1);
+    transform: translateX(0);
   }
 }

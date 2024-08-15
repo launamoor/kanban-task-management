@@ -3,4 +3,6 @@
   flex-direction: column;
   flex-basis: auto;
   min-width: calc(100vw - 30rem);
+  width: 100%;
+  transition: all 0.15s ease;
 }

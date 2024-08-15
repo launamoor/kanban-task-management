@@ -5,13 +5,13 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import logoLight from "@/public/assets/logo-light.svg";
 import logoDark from "@/public/assets/logo-dark.svg";
+import showSidebarIcon from "@/public/assets/icon-show-sidebar.svg";
 import BoardButton from "./BoardButton";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const Sidebar = ({ activeBoard, setActiveBoard }) => {
   const [boards, setBoards] = useState([]);
-  const [startAnimation, setStartAnimation] = useState(false);
-  const [sidebarHidden, setSidebarHidden] = useState(false);
+  const [hideButtonClicked, setHideButtonClicked] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -32,61 +32,67 @@ const Sidebar = ({ activeBoard, setActiveBoard }) => {
     setActiveBoard(+e.currentTarget.id);
   };
 
-  const hideButton = () => {
-    setStartAnimation(true);
-    setTimeout(() => {
-      setSidebarHidden(true);
-    }, 500);
+  const handleHide = () => {
+    setHideButtonClicked((prev) => !prev);
   };
+
   return (
-    <aside
-      className={`${styles.outerWrapper} ${
-        sidebarHidden ? styles.outerWrapperHidden : ""
-      }`}
-    >
-      <div className={styles.innerWrapper}>
-        <div className={styles.logoWrapper}>
-          <Image
-            priority
-            src={theme === "dark" ? logoLight : logoDark}
-            alt="Kanban logo"
-          />
-        </div>
-        <div className={styles.boardsDiv}>
-          <h4 className={styles.boardsTitle}>All Boards (3)</h4>
-          <nav>
-            <ul className={styles.navList}>
-              {boards.map((board) => (
-                <li key={board.id}>
+    <>
+      <aside
+        className={`${styles.outerWrapper} ${
+          hideButtonClicked ? styles.hide : ""
+        }`}
+      >
+        <div className={styles.innerWrapper}>
+          <div className={styles.logoWrapper}>
+            <Image
+              priority
+              src={theme === "dark" ? logoLight : logoDark}
+              alt="Kanban logo"
+            />
+          </div>
+          <div className={styles.boardsDiv}>
+            <h4 className={styles.boardsTitle}>All Boards (3)</h4>
+            <nav>
+              <ul className={styles.navList}>
+                {boards.map((board) => (
+                  <li key={board.id}>
+                    <BoardButton
+                      boardIcon
+                      onClick={handleClick}
+                      id={board.id}
+                      text={board.name}
+                      active={activeBoard === board.id}
+                    />
+                  </li>
+                ))}
+                <li>
                   <BoardButton
                     boardIcon
-                    onClick={handleClick}
-                    id={board.id}
-                    text={board.name}
-                    active={activeBoard === board.id}
+                    createNew
+                    text={"+ Create New Board"}
                   />
                 </li>
-              ))}
-              <li>
-                <BoardButton boardIcon createNew text={"+ Create New Board"} />
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <ThemeSwitcher />
-        {!sidebarHidden && (
+              </ul>
+            </nav>
+          </div>
+          <ThemeSwitcher />
+
           <BoardButton
-            customClasses={`${styles.hideButton} ${
-              !startAnimation ? "" : styles.hideButtonAnimation
-            }`}
+            customClasses={styles.hideButton}
             hideIcon
             hidden={false}
             text={"Hide Sidebar"}
-            onClick={hideButton}
+            onClick={handleHide}
           />
-        )}
-      </div>
-    </aside>
+        </div>
+      </aside>
+      {hideButtonClicked && (
+        <button onClick={handleHide} className={styles.showSidebarButton}>
+          <Image src={showSidebarIcon} alt="Show Sidebar Icon" />
+        </button>
+      )}
+    </>
   );
 };
 
