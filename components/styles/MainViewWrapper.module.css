@@ -1,0 +1,6 @@
+.outerWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: auto;
+  min-width: calc(100vw - 30rem);
+}

@@ -1,0 +1,4 @@
+.outerWrapper {
+  min-height: calc(100vh - 10rem);
+  background-color: var(--background-secondary);
+}

@@ -1,0 +1,66 @@
+.outerWrapper {
+  flex-basis: 30rem;
+  min-height: 100%;
+  background-color: var(--background-primary);
+  border-right: 1px solid var(--border-primary);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+  position: relative;
+}
+
+.outerWrapperHidden {
+  transform: translateX(-100%);
+  flex-basis: 0rem;
+  min-height: 100%;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+  position: relative;
+}
+
+.innerWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.logoWrapper {
+  min-height: 11.2rem;
+  padding: 3.3rem 0 0 3.4rem;
+}
+
+.boardsDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.boardsTitle {
+  text-transform: uppercase;
+  padding-left: 3.2rem;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.hideButton {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 0;
+}
+
+.hideButtonAnimation {
+  animation: hide 0.55s ease;
+}
+
+@keyframes hide {
+  from {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(1rem) scaleX(1.1);
+  }
+  to {
+    transform: translateX(-100%) scaleX(1);
+  }
+}

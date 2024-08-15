@@ -1,0 +1,68 @@
+.navButton,
+.createNewButton {
+  padding: 1.4rem 9.2rem 1.5rem 3.2rem;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.createNewButton .buttonTitle {
+  color: #635fc7;
+}
+
+.createNewButton .iconBoard {
+  fill: #635fc7;
+}
+
+.createNewButton:active {
+  transform: scaleY(0.95);
+}
+
+.navButton:hover,
+.createNewButton:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-primary);
+}
+
+.buttonActive {
+  background-color: var(--color-primary) !important;
+}
+
+.buttonActive .buttonTitle {
+  color: #fff !important;
+}
+
+.buttonActive .iconBoard {
+  fill: #fff !important;
+}
+
+.navButton:hover .buttonTitle {
+  color: var(--color-primary);
+}
+
+.iconBoard {
+  fill: #828fa3;
+}
+
+.navButton:hover .iconBoard {
+  fill: var(--color-primary);
+}
+
+.buttonDiv {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.6rem;
+  min-width: 15rem;
+}
+
+.buttonTitle {
+  color: #828fa3;
+}
+
+.buttonHidden {
+  /*  */
+}

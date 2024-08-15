@@ -1,0 +1,32 @@
+.outerWrapper {
+  min-height: 10rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.innerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-inline: 2.4rem;
+}
+
+.newTaskDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+}
+
+.menuButton {
+  background-color: inherit;
+  border: none;
+  transition: all 0.15s ease;
+  padding-inline: 0.5rem;
+}
+
+.menuButton:hover {
+  opacity: 0.75;
+}
