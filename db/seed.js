@@ -13,6 +13,7 @@ async function main() {
         columns: {
           create: boardData.columns.map((column) => ({
             name: column.name,
+            color: column.color,
             tasks: {
               create: column.tasks.map((task) => ({
                 title: task.title,

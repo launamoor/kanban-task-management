@@ -1,0 +1,23 @@
+.outerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.titleDiv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1.2rem;
+}
+
+.dot {
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+}
+
+.columnTitle {
+  text-transform: uppercase;
+}

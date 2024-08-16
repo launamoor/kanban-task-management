@@ -8,6 +8,7 @@ CREATE TABLE "Board" (
 CREATE TABLE "Column" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
+    "color" TEXT NOT NULL,
     "boardId" INTEGER NOT NULL,
     CONSTRAINT "Column_boardId_fkey" FOREIGN KEY ("boardId") REFERENCES "Board" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );

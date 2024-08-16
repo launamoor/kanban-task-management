@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "@/components/styles/MainView.module.css";
+import Board from "./Board";
 
-const MainView = () => {
+const MainView = ({ boards }) => {
   return (
     <main className={styles.outerWrapper}>
-      <div></div>
+      <Board boards={boards} />
     </main>
   );
 };

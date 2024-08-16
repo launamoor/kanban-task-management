@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "@/components/styles/Sidebar.module.css";
 import Image from "next/image";
 import { useTheme } from "next-themes";
@@ -9,24 +9,9 @@ import showSidebarIcon from "@/public/assets/icon-show-sidebar.svg";
 import BoardButton from "./BoardButton";
 import ThemeSwitcher from "./ThemeSwitcher";
 
-const Sidebar = ({ activeBoard, setActiveBoard }) => {
-  const [boards, setBoards] = useState([]);
+const Sidebar = ({ activeBoard, setActiveBoard, boards }) => {
   const [hideButtonClicked, setHideButtonClicked] = useState(false);
   const { theme } = useTheme();
-
-  useEffect(() => {
-    async function fetchBoards() {
-      try {
-        const response = await fetch("/api/boards");
-        const data = await response.json();
-        setBoards(data);
-      } catch (error) {
-        console.error("Error fetching boards: ", error);
-      }
-    }
-
-    fetchBoards();
-  }, []);
 
   const handleClick = (e) => {
     setActiveBoard(+e.currentTarget.id);
@@ -52,7 +37,7 @@ const Sidebar = ({ activeBoard, setActiveBoard }) => {
             />
           </div>
           <div className={styles.boardsDiv}>
-            <h4 className={styles.boardsTitle}>All Boards (3)</h4>
+            <h4 className={styles.boardsTitle}>All Boards ({boards.length})</h4>
             <nav>
               <ul className={styles.navList}>
                 {boards.map((board) => (

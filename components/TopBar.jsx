@@ -4,7 +4,7 @@ import AddButton from "./AddButton";
 import menuIcon from "@/public/assets/icon-vertical-ellipsis.svg";
 import Image from "next/image";
 
-const TopBar = ({ activeBoard }) => {
+const TopBar = ({ activeBoard, boards }) => {
   const [board, setBoard] = useState(null);
   useEffect(() => {
     async function fetchBoard() {
@@ -28,7 +28,7 @@ const TopBar = ({ activeBoard }) => {
       <div className={styles.innerWrapper}>
         <h1>{board?.name}</h1>
         <div className={styles.newTaskDiv}>
-          <AddButton disabled text={"+ Add New Task"} />
+          <AddButton disabled={boards.length === 0} text={"+ Add New Task"} />
           <button className={styles.menuButton}>
             <Image src={menuIcon} alt="Menu Icon" />
           </button>

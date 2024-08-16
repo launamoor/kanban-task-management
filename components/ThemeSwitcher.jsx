@@ -28,7 +28,7 @@ const ThemeSwitcher = () => {
           <input
             checked={theme === "dark"}
             type="checkbox"
-            onClick={handleThemeChange}
+            onChange={handleThemeChange}
           />
         </div>
         <Image src={iconDark} alt="Icon Dark Theme" />
