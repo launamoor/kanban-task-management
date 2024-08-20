@@ -35,10 +35,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 91.5%;
+  height: 80vh;
+  transform: translateY(3.5rem);
   width: 100%;
   overflow: hidden;
   place-self: center;
+  align-self: stretch;
 }
 
 .newColumnButton {
@@ -55,6 +57,7 @@
 
 .newColumnButton:hover {
   color: var(--color-primary);
+  transform: scale(1.01);
 }
 
 .newColumnButton:active {

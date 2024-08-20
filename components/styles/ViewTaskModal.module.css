@@ -1,0 +1,76 @@
+.outerWrapper {
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: var(--background-primary);
+  width: 48rem;
+}
+
+.innerWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 3.2rem;
+  gap: 2.4rem;
+}
+
+.titleDiv {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.title {
+  flex-basis: 95%;
+}
+
+.description {
+  font-size: 1.3rem;
+  font-weight: normal;
+  line-height: 2.3rem;
+}
+
+.subtasksDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.subtasksTitle,
+.currentStatusDiv p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.dropdown {
+  width: 100%;
+  position: relative;
+}
+
+.select {
+  appearance: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.3rem;
+  line-height: 2.3rem;
+  padding: 0.8rem 0 0.8rem 1.6rem;
+  background-color: inherit;
+  border: 1px solid rgba(130, 143, 163, 0.25);
+  border-radius: 4px;
+
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: 1px solid var(--color-primary);
+}
+
+.select option {
+  color: var(--color-text);
+}
+
+.dropdownIcon {
+  position: absolute;
+  top: 50%;
+  right: 3%;
+  transform: translate(-50%, -50%);
+}

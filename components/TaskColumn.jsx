@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
 import styles from "@/components/styles/TaskColumn.module.css";
 import TaskCard from "./TaskCard";
 
-const TaskColumn = ({ column, color }) => {
+const TaskColumn = ({ column, color, onTaskClick, setViewTaskOpen }) => {
+  const tasks = column?.tasks;
   return (
     <div className={styles.outerWrapper}>
       <div className={styles.titleDiv}>
@@ -11,11 +13,12 @@ const TaskColumn = ({ column, color }) => {
           {column.name} ({column.tasks.length})
         </h4>
       </div>
-      {column.tasks.map((task) => (
+      {tasks.map((task) => (
         <TaskCard
+          setViewTaskOpen={setViewTaskOpen}
+          onTaskClick={onTaskClick}
           key={task.id}
-          title={task.title}
-          totalSubtasks={task.subtasks.length}
+          task={task}
         />
       ))}
     </div>

@@ -22,15 +22,5 @@
   align-items: center;
   justify-content: center;
   gap: 2.4rem;
-}
-
-.menuButton {
-  background-color: inherit;
-  border: none;
-  transition: all 0.15s ease;
-  padding-inline: 0.5rem;
-}
-
-.menuButton:hover {
-  opacity: 0.75;
+  position: relative;
 }

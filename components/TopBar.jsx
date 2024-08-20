@@ -3,9 +3,13 @@ import styles from "@/components/styles/TopBar.module.css";
 import AddButton from "./AddButton";
 import menuIcon from "@/public/assets/icon-vertical-ellipsis.svg";
 import Image from "next/image";
+import EditButton from "./EditButton";
+import { useAppContext } from "@/context/appContext";
 
 const TopBar = ({ activeBoard, boards }) => {
   const [board, setBoard] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     async function fetchBoard() {
       try {
@@ -29,9 +33,7 @@ const TopBar = ({ activeBoard, boards }) => {
         <h1>{board?.name}</h1>
         <div className={styles.newTaskDiv}>
           <AddButton disabled={boards.length === 0} text={"+ Add New Task"} />
-          <button className={styles.menuButton}>
-            <Image src={menuIcon} alt="Menu Icon" />
-          </button>
+          <EditButton id={"board"} />
         </div>
       </div>
     </header>

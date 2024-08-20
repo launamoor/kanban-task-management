@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { AppProvider } from "@/context/appContext";
 import { ThemeProvider } from "next-themes";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import Sidebar from "@/components/Sidebar";
@@ -8,39 +9,44 @@ import TopBar from "@/components/TopBar";
 import MainView from "@/components/MainView";
 
 const HomePage = () => {
-  const [boards, setBoards] = useState([]);
+  const [data, setData] = useState([]);
+  const [activeBoard, setActiveBoard] = useState(1);
+  const [activeTask, setActiveTask] = useState(null);
 
   useEffect(() => {
     async function fetchBoards() {
       try {
         const response = await fetch("/api/boards");
         const data = await response.json();
-        setBoards(data);
+        setData(data);
       } catch (error) {
         console.error("Error fetching boards: ", error);
       }
     }
 
     fetchBoards();
-  }, []);
+  }, [activeTask]);
 
-  const [activeBoard, setActiveBoard] = useState(1);
   return (
-    <ThemeProvider>
-      <LayoutWrapper>
-        <Sidebar
-          activeBoard={activeBoard}
-          setActiveBoard={setActiveBoard}
-          boards={boards}
-        />
-        <MainViewWrapper>
-          <TopBar activeBoard={activeBoard} boards={boards} />
-          <MainView
-            boards={boards.filter((board) => board.id === activeBoard)}
+    <AppProvider>
+      <ThemeProvider>
+        <LayoutWrapper>
+          <Sidebar
+            activeBoard={activeBoard}
+            setActiveBoard={setActiveBoard}
+            boards={data}
           />
-        </MainViewWrapper>
-      </LayoutWrapper>
-    </ThemeProvider>
+          <MainViewWrapper>
+            <TopBar activeBoard={activeBoard} boards={data} />
+            <MainView
+              activeTask={activeTask}
+              setActiveTask={setActiveTask}
+              boards={data.filter((board) => board.id === activeBoard)}
+            />
+          </MainViewWrapper>
+        </LayoutWrapper>
+      </ThemeProvider>
+    </AppProvider>
   );
 };
 

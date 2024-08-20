@@ -1,8 +1,19 @@
-.outerWrapper {
-  padding: 2.3rem 1.6rem;
+.taskButton {
+  font-family: inherit;
+  border: none;
+  overflow: hidden;
+  text-align: inherit;
   background-color: var(--background-primary);
   border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.outerWrapper {
+  padding: 2.3rem 1.6rem;
   transition: background-color 0.15s ease;
+  font-family: inherit;
+  text-align: inherit;
+  border: none;
 }
 
 .innerWrapper {
@@ -15,5 +26,13 @@
   font-size: 1.2rem;
   line-height: 1.5rem;
   font-weight: bold;
-  color: var(--text-color);
+  color: var(--color-text);
+}
+
+.taskTitle {
+  transition: all 0.15s ease;
+}
+
+.taskButton:hover .taskTitle {
+  color: var(--color-primary);
 }

@@ -1,0 +1,64 @@
+.outerWrapper {
+  width: 100%;
+  min-height: 4rem;
+  background-color: var(--background-secondary);
+  border-radius: 4px;
+  padding: 1.2rem;
+}
+
+.innerWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  position: relative;
+}
+
+.subtaskTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-heading);
+}
+
+.checkbox {
+  visibility: hidden;
+}
+
+.customCheckbox {
+  height: 1.6rem;
+  width: 1.6rem;
+  position: absolute;
+  top: 50%;
+  left: 1.5%;
+  transform: translate(-50%, -50%);
+  background-color: var(--background-primary);
+  border-radius: 2px;
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+.checkboxBorder {
+  border: 1px solid rgba(130, 143, 163, 0.25);
+}
+
+.customCheckboxInner {
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-primary);
+  position: relative;
+}
+
+.customCheckboxIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.subtaskTitleCompleted {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-heading);
+  opacity: 0.5;
+  text-decoration: line-through;
+}
