@@ -10,16 +10,16 @@ generator client {
 model Board {
   id      Int      @id @default(autoincrement())
   name    String
-  columns Column[]
+  columns Column[] @relation("BoardColumns")
 }
 
 model Column {
   id      Int     @id @default(autoincrement())
   name    String
   color   String
-  board   Board   @relation(fields: [boardId], references: [id])
+  board   Board   @relation("BoardColumns", fields: [boardId], references: [id], onDelete: Cascade)
   boardId Int
-  tasks   Task[]
+  tasks   Task[]  @relation("ColumnTasks")
 }
 
 model Task {
@@ -27,15 +27,15 @@ model Task {
   title       String
   description String?
   status      String
-  column      Column      @relation(fields: [columnId], references: [id])
+  column      Column      @relation("ColumnTasks", fields: [columnId], references: [id], onDelete: Cascade)
   columnId    Int
-  subtasks    Subtask[]
+  subtasks    Subtask[]   @relation("TaskSubtasks")
 }
 
 model Subtask {
   id          Int     @id @default(autoincrement())
   title       String
   isCompleted Boolean
-  task        Task    @relation(fields: [taskId], references: [id])
+  task        Task    @relation("TaskSubtasks", fields: [taskId], references: [id], onDelete: Cascade)
   taskId      Int
 }

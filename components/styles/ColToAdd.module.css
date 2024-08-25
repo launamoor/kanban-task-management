@@ -1,0 +1,35 @@
+.outerWrapper {
+  width: 100%;
+}
+
+.innerWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.colName {
+  font-size: 1.3rem;
+  color: var(--color-text-form);
+  border: 1px solid var(--border-primary);
+  padding: 0.8rem 0 0.8rem 1.6rem;
+  border-radius: 4px;
+  font-weight: normal;
+  width: 100%;
+}
+
+.deleteButton {
+  cursor: pointer;
+  background-color: inherit;
+  border: none;
+  position: relative;
+}
+
+.deleteButton svg {
+  fill: #828fa3;
+  transition: all 0.15s ease;
+}
+
+.deleteButton:hover svg {
+  fill: var(--color-red-hover);
+}

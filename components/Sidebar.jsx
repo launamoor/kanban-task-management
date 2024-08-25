@@ -8,10 +8,12 @@ import logoDark from "@/public/assets/logo-dark.svg";
 import showSidebarIcon from "@/public/assets/icon-show-sidebar.svg";
 import BoardButton from "./BoardButton";
 import ThemeSwitcher from "./ThemeSwitcher";
+import { useAppContext } from "@/context/appContext";
 
 const Sidebar = ({ activeBoard, setActiveBoard, boards }) => {
   const [hideButtonClicked, setHideButtonClicked] = useState(false);
   const { theme } = useTheme();
+  const { openAddNewBoard } = useAppContext();
 
   const handleClick = (e) => {
     setActiveBoard(+e.currentTarget.id);
@@ -56,6 +58,7 @@ const Sidebar = ({ activeBoard, setActiveBoard, boards }) => {
                     boardIcon
                     createNew
                     text={"+ Create New Board"}
+                    onClick={openAddNewBoard}
                   />
                 </li>
               </ul>

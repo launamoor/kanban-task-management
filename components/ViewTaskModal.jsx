@@ -4,6 +4,8 @@ import styles from "@/components/styles/ViewTaskModal.module.css";
 import Loading from "@/app/loading";
 import Subtask from "./Subtask";
 import EditButton from "./EditButton";
+import EditPopup from "./EditPopup";
+import { useAppContext } from "@/context/appContext";
 
 const ViewTaskModal = ({
   activeTask,
@@ -12,6 +14,7 @@ const ViewTaskModal = ({
   handleStatusChange,
   board,
 }) => {
+  const { menuOpen, menuLocation, handleOpenMenu, anim } = useAppContext();
   const columns = board.columns;
   // Calculate completed subtasks
   const completedCount = activeTask.subtasks.reduce((acc, subtask) => {
@@ -65,7 +68,22 @@ const ViewTaskModal = ({
       <div className={styles.innerWrapper}>
         <div className={styles.titleDiv}>
           <h2 className={styles.title}>{activeTask.title}</h2>
-          <EditButton id={"task"} />
+          <div style={{ position: "relative" }}>
+            <EditButton
+              id={"edit-task"}
+              onClick={(e) => handleOpenMenu(styles.scaleOut, e)}
+            />
+            {menuOpen && menuLocation === "edit-task" && (
+              <EditPopup
+                style={{
+                  top: "3rem",
+                  right: "-10rem",
+                }}
+                anim={anim}
+                className={styles.editPopupDiv}
+              />
+            )}
+          </div>
         </div>
         <p className={styles.description}>{activeTask.description}</p>
         <div className={styles.subtasksDiv}>
@@ -86,6 +104,7 @@ const ViewTaskModal = ({
             <select
               onChange={(e) => updateTaskColumn(e)}
               className={styles.select}
+              value={activeTask.columnId}
             >
               {columns.map((col) => (
                 <option key={col.id} value={col.id}>

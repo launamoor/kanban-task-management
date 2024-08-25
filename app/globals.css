@@ -17,6 +17,10 @@
 
   --border-primary: #e4ebfa;
 
+  --color-placeholder: rgba(0, 0, 0, 0.25);
+
+  --color-text-form: #000;
+
   --gradient-primary: linear-gradient(
     180deg,
     rgba(233, 239, 250, 1) 0%,
@@ -29,7 +33,9 @@
   --background-secondary: #20212c;
   --color-heading: #fff;
   --color-text: #828fa3;
+  --color-text-form: #fff;
   --border-primary: #3e3f4e;
+  --color-placeholder: rgba(255, 255, 255, 0.25);
   --gradient-primary: linear-gradient(
     180deg,
     rgba(43, 44, 55, 1) 0%,

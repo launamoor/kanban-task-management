@@ -37,11 +37,18 @@ const HomePage = () => {
             boards={data}
           />
           <MainViewWrapper>
-            <TopBar activeBoard={activeBoard} boards={data} />
+            <TopBar
+              setData={setData}
+              setActiveBoard={setActiveBoard}
+              activeBoard={activeBoard}
+              boards={data}
+            />
             <MainView
               activeTask={activeTask}
               setActiveTask={setActiveTask}
-              boards={data.filter((board) => board.id === activeBoard)}
+              boards={data?.filter((board) => board.id === activeBoard)}
+              setData={setData}
+              data={data}
             />
           </MainViewWrapper>
         </LayoutWrapper>

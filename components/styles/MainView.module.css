@@ -1,7 +1,6 @@
 .outerWrapper {
   min-height: calc(100vh - 10rem);
   background-color: var(--background-secondary);
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow: scroll;
   transition: background-color 0.15s ease;
 }

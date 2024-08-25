@@ -4,7 +4,7 @@ import styles from "@/components/styles/MainView.module.css";
 import Board from "./Board";
 import Loading from "@/app/loading";
 
-const MainView = ({ boards, activeTask, setActiveTask }) => {
+const MainView = ({ boards, activeTask, setActiveTask, setData, data }) => {
   const [boardToDisplay, setBoardToDisplay] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -22,6 +22,8 @@ const MainView = ({ boards, activeTask, setActiveTask }) => {
         activeTask={activeTask}
         setActiveTask={setActiveTask}
         board={boardToDisplay}
+        setData={setData}
+        data={data}
       />
     </main>
   );

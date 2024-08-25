@@ -5,13 +5,21 @@ import AddButton from "./AddButton";
 import TaskColumn from "./TaskColumn";
 import Overlay from "./Overlay";
 import ViewTaskModal from "./ViewTaskModal";
+import AddNewBoardModal from "./AddNewBoardModal";
 import Loading from "@/app/loading";
+import { useAppContext } from "@/context/appContext";
 
-const Board = ({ board, activeTask, setActiveTask }) => {
-  const [taskID, setTaskID] = useState(0);
-  const [viewTaskOpen, setViewTaskOpen] = useState(false);
+const Board = ({ board, activeTask, setActiveTask, setData, data }) => {
   const [loading, setLoading] = useState(true);
   const columns = board?.columns;
+  const {
+    viewTaskOpen,
+    setViewTaskOpen,
+    taskID,
+    setTaskID,
+    closeModal,
+    addNewBoardOpen,
+  } = useAppContext();
 
   // Fetch individual task
   useEffect(() => {
@@ -34,13 +42,6 @@ const Board = ({ board, activeTask, setActiveTask }) => {
 
     fetchTask();
   }, [taskID]);
-
-  const closeModal = (e) => {
-    if (e.target.id === "overlay") {
-      setViewTaskOpen(false);
-      setTaskID(0);
-    }
-  };
 
   const handleTaskClick = (taskID) => {
     setTaskID(taskID);
@@ -92,6 +93,11 @@ const Board = ({ board, activeTask, setActiveTask }) => {
             setActiveTask={setActiveTask}
             board={board}
           />
+        </Overlay>
+      )}
+      {addNewBoardOpen && (
+        <Overlay onModalClose={closeModal}>
+          <AddNewBoardModal data={data} setData={setData} />
         </Overlay>
       )}
       {board?.length === 0 ? (

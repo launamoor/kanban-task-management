@@ -74,3 +74,73 @@
   right: 3%;
   transform: translate(-50%, -50%);
 }
+
+/* **************** */
+
+.editPopupDiv {
+  background-color: var(--background-primary);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 6rem;
+  right: 0;
+  z-index: 99;
+  min-width: 19.2rem;
+  border-radius: 8px;
+
+  animation: scaleIn 0.2s ease;
+}
+
+.scaleOut {
+  animation: scaleOut 0.2s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0) translate(5rem, -5rem);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0) translate(5rem, -5rem);
+    opacity: 0;
+  }
+}
+
+.popupButtonEdit,
+.popupButtonDelete {
+  border: none;
+  text-align: start;
+  font-family: inherit;
+  font-size: 1.3rem;
+  line-height: 2.3rem;
+  background-color: inherit;
+  transition: all 0.15s ease;
+}
+
+.popupButtonEdit {
+  color: var(--color-text);
+}
+
+.popupButtonEdit:hover {
+  color: var(--color-text-hover);
+}
+
+.popupButtonDelete {
+  color: var(--color-red);
+}
+
+.popupButtonDelete:hover {
+  color: var(--color-red-hover);
+}
