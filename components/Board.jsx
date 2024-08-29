@@ -6,10 +6,22 @@ import TaskColumn from "./TaskColumn";
 import Overlay from "./Overlay";
 import ViewTaskModal from "./ViewTaskModal";
 import AddNewBoardModal from "./AddNewBoardModal";
+import DeleteModal from "./DeleteModal";
 import Loading from "@/app/loading";
+import AddTaskModal from "./AddTaskModal";
 import { useAppContext } from "@/context/appContext";
 
-const Board = ({ board, activeTask, setActiveTask, setData, data }) => {
+const Board = ({
+  board,
+  activeTask,
+  setActiveTask,
+  setData,
+  data,
+  activeBoard,
+  setActiveBoard,
+  setTasks,
+  tasks,
+}) => {
   const [loading, setLoading] = useState(true);
   const columns = board?.columns;
   const {
@@ -19,6 +31,11 @@ const Board = ({ board, activeTask, setActiveTask, setData, data }) => {
     setTaskID,
     closeModal,
     addNewBoardOpen,
+    deleteValidationOpen,
+    setDeleteValidationOpen,
+    addTaskModalOpen,
+    deleteValidationTask,
+    setDeleteValidationTask,
   } = useAppContext();
 
   // Fetch individual task
@@ -80,6 +97,46 @@ const Board = ({ board, activeTask, setActiveTask, setData, data }) => {
     }
   };
 
+  const handleDeleteBoard = async () => {
+    try {
+      const response = await fetch(`/api/boards/${activeBoard}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete board");
+      }
+
+      setData((prev) => prev.filter((board) => board.id !== activeBoard));
+      setActiveBoard(data[0].id);
+      setDeleteValidationOpen(false);
+    } catch (error) {
+      console.error("Error deleting board:", error);
+    }
+  };
+
+  const handleDeleteTask = async () => {
+    try {
+      const response = await fetch(`/api/tasks/${activeTask.id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete task");
+      }
+
+      setActiveTask(null);
+      setDeleteValidationTask(false);
+    } catch (error) {
+      console.error("Error deleting board:", error);
+    }
+  };
+
+  const handleCancelDeletion = () => {
+    setDeleteValidationOpen(false);
+    setDeleteValidationTask(false);
+  };
+
   if (!board) return <Loading />;
 
   return (
@@ -99,6 +156,25 @@ const Board = ({ board, activeTask, setActiveTask, setData, data }) => {
         <Overlay onModalClose={closeModal}>
           <AddNewBoardModal data={data} setData={setData} />
         </Overlay>
+      )}
+      {deleteValidationOpen && (
+        <DeleteModal
+          onDelete={handleDeleteBoard}
+          onCancel={handleCancelDeletion}
+          modal={board}
+          modalType="board"
+        />
+      )}
+      {deleteValidationTask && activeTask && (
+        <DeleteModal
+          onDelete={handleDeleteTask}
+          onCancel={handleCancelDeletion}
+          modal={activeTask}
+          modalType="task"
+        />
+      )}
+      {addTaskModalOpen && (
+        <AddTaskModal setTasks={setTasks} tasks={tasks} board={board} />
       )}
       {board?.length === 0 ? (
         <div className={styles.emptyBoard}>

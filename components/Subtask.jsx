@@ -17,8 +17,6 @@ const Subtask = ({ subtask, onStatusChange }) => {
     setReady(true);
   };
 
-  // Fix delay in updating state
-
   return (
     <div className={styles.outerWrapper}>
       <div className={styles.innerWrapper}>

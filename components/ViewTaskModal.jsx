@@ -14,7 +14,15 @@ const ViewTaskModal = ({
   handleStatusChange,
   board,
 }) => {
-  const { menuOpen, menuLocation, handleOpenMenu, anim } = useAppContext();
+  const {
+    menuOpen,
+    menuLocation,
+    handleOpenMenu,
+    anim,
+    setDeleteValidationTask,
+    setViewTaskOpen,
+    setMenuOpen,
+  } = useAppContext();
   const columns = board.columns;
   // Calculate completed subtasks
   const completedCount = activeTask.subtasks.reduce((acc, subtask) => {
@@ -25,7 +33,6 @@ const ViewTaskModal = ({
   const updateTaskColumn = async (e) => {
     const desiredColumn = e.target.value;
 
-    // Optimistically update state
     setActiveTask((prev) => ({
       ...prev,
       columnId: desiredColumn,
@@ -61,6 +68,12 @@ const ViewTaskModal = ({
     }
   };
 
+  const openValidationModal = () => {
+    setDeleteValidationTask(true);
+    setViewTaskOpen(false);
+    setMenuOpen(false);
+  };
+
   if (loading) return <Loading />;
 
   return (
@@ -81,6 +94,8 @@ const ViewTaskModal = ({
                 }}
                 anim={anim}
                 className={styles.editPopupDiv}
+                component={"Task"}
+                onDelete={openValidationModal}
               />
             )}
           </div>

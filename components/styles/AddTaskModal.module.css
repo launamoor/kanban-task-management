@@ -1,0 +1,116 @@
+.outerWrapper {
+  min-width: 48rem;
+  background-color: var(--background-primary);
+  border-radius: 6px;
+  padding: 3.2rem;
+}
+
+.innerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.addSubtaskButton {
+  background-color: var(--color-primary-hover);
+  color: var(--color-primary);
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.8rem 0 0.8rem 0;
+  border-radius: 20px;
+  border: none;
+  margin-top: 0.4rem;
+
+  transition: all 0.15s ease;
+}
+
+.addSubtaskButton:hover {
+  background-color: var(--hover-primary-opa25);
+}
+
+.createTaskButton {
+  padding: 0.8rem 0 0.8rem 0;
+  border-radius: 20px;
+  border: none;
+  font-family: inherit;
+  font-size: 1.3rem;
+  line-height: 2.3rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: var(--color-primary);
+
+  transition: all 0.15s ease;
+}
+
+.createTaskButton:hover {
+  background-color: var(--color-primary-hovermain);
+}
+
+.taskDetailsDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.titleDiv,
+.descriptionDiv,
+.subtasksDiv,
+.statusDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.formLabel {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.formInput,
+.formInputArea {
+  padding: 0.8rem 0 0.8rem 1.6rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-primary);
+  font-family: inherit;
+}
+
+.formInputArea {
+  min-height: 11rem;
+  resize: vertical;
+}
+
+.formInput::placeholder,
+.formInputArea::placeholder {
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: normal;
+  color: var(--color-placeholder);
+}
+
+.formInput:focus,
+.formInput:hover,
+.formInputArea:focus,
+.formInputArea:hover {
+  outline: 1px solid var(--color-primary);
+}
+
+.formInput:invalid,
+.formInputArea:invalid {
+  outline: 1px solid var(--color-red);
+}
+
+.subtasksFlex {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.select {
+  padding: 0.8rem 0 0.8rem 1.6rem;
+  border-radius: 4px;
+  background-color: inherit;
+  font-family: inherit;
+  color: var(--color-text-form);
+  font-size: 1.3rem;
+}

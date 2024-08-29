@@ -50,3 +50,23 @@ export async function PATCH(request, { params }) {
     return new Response("Error updating task", { status: 500 });
   }
 }
+
+export async function DELETE(request, { params }) {
+  const { id } = params;
+
+  try {
+    const task = await prisma.task.delete({
+      where: { id: Number(id) },
+    });
+
+    return new Response(
+      JSON.stringify({ message: "Task deleted successfully", task }),
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  } catch (error) {
+    console.error("Error deleting task:", error);
+    return new Response("Error deleting task", { status: 500 });
+  }
+}

@@ -1,0 +1,59 @@
+.outerWrapper {
+  max-width: 48rem;
+  min-height: 23rem;
+  background-color: var(--background-primary);
+  border-radius: 6px;
+  padding: 3.2rem;
+}
+
+.innerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.title {
+  color: var(--color-red);
+}
+
+.description {
+  font-size: 1.3rem;
+}
+
+.buttonsFlex {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.buttonDelete,
+.buttonCancel {
+  width: 100%;
+  padding: 0.8rem 0 0.8rem 0;
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 2.3rem;
+  border-radius: 20px;
+  border: none;
+
+  transition: all 0.15s ease;
+}
+
+.buttonDelete {
+  background-color: var(--color-red);
+  color: #fff;
+}
+
+.buttonCancel {
+  background-color: var(--color-primary-hover);
+  color: var(--color-primary);
+}
+
+.buttonDelete:hover {
+  background-color: var(--color-red-hover);
+}
+
+.buttonCancel:hover {
+  background-color: rgba(99, 95, 199, 0.25);
+}

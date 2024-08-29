@@ -4,6 +4,7 @@
   --color-primary: #635fc7;
   --color-primary-hover: rgba(99, 95, 199, 0.1);
   --color-primary-hovermain: #a8a4ff;
+  --hover-primary-opa25: rgba(99, 95, 199, 0.25);
 
   --color-heading: #000112;
   --color-text: #828fa3;

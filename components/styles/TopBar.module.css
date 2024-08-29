@@ -38,6 +38,7 @@
   z-index: 999;
   min-width: 19.2rem;
   border-radius: 8px;
+  box-shadow: 0 10px 20px 2px rgba(0, 0, 0, 0.1);
 
   animation: scaleIn 0.2s ease;
 }

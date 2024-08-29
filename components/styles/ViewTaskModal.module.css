@@ -1,5 +1,5 @@
 .outerWrapper {
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 6px;
   background-color: var(--background-primary);
   width: 48rem;
@@ -86,8 +86,9 @@
   top: 6rem;
   right: 0;
   z-index: 99;
-  min-width: 19.2rem;
+  min-width: 17.2rem;
   border-radius: 8px;
+  box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.1);
 
   animation: scaleIn 0.2s ease;
 }

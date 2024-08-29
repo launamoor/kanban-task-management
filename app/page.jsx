@@ -12,6 +12,7 @@ const HomePage = () => {
   const [data, setData] = useState([]);
   const [activeBoard, setActiveBoard] = useState(1);
   const [activeTask, setActiveTask] = useState(null);
+  const [tasks, setTasks] = useState(0);
 
   useEffect(() => {
     async function fetchBoards() {
@@ -25,7 +26,7 @@ const HomePage = () => {
     }
 
     fetchBoards();
-  }, [activeTask]);
+  }, [activeTask, tasks]);
 
   return (
     <AppProvider>
@@ -44,11 +45,15 @@ const HomePage = () => {
               boards={data}
             />
             <MainView
+              activeBoard={activeBoard}
+              setActiveBoard={setActiveBoard}
               activeTask={activeTask}
               setActiveTask={setActiveTask}
               boards={data?.filter((board) => board.id === activeBoard)}
               setData={setData}
               data={data}
+              setTasks={setTasks}
+              tasks={tasks}
             />
           </MainViewWrapper>
         </LayoutWrapper>

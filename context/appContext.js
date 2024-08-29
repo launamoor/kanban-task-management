@@ -9,6 +9,9 @@ export const AppProvider = ({ children }) => {
   const [taskID, setTaskID] = useState(0);
   const [viewTaskOpen, setViewTaskOpen] = useState(false);
   const [addNewBoardOpen, setAddNewBoardOpen] = useState(false);
+  const [deleteValidationOpen, setDeleteValidationOpen] = useState(false);
+  const [deleteValidationTask, setDeleteValidationTask] = useState(false);
+  const [addTaskModalOpen, setAddTaskModalOpen] = useState(false);
 
   // Open menu handler - START
   const handleOpenMenu = (animation, e) => {
@@ -58,6 +61,12 @@ export const AppProvider = ({ children }) => {
         addNewBoardOpen,
         setAddNewBoardOpen,
         openAddNewBoard,
+        deleteValidationOpen,
+        setDeleteValidationOpen,
+        addTaskModalOpen,
+        setAddTaskModalOpen,
+        deleteValidationTask,
+        setDeleteValidationTask,
       }}
     >
       {children}
